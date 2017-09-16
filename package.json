@@ -1,0 +1,27 @@
+{
+  "name": "ts-rewire",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "format": "prettier src/**/*.ts? src/**/*.css config-overrides/**/*.js --config .prettierrc.json --write"
+  },
+  "devDependencies": {
+    "@types/jest": "^20.0.8",
+    "@types/react": "^16.0.5",
+    "@types/react-dom": "^15.5.4",
+    "prettier": "^1.7.0",
+    "react-app-rewired": "^1.2.7",
+    "react-scripts": "1.0.13",
+    "ts-jest": "^21.0.1",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.5.2",
+    "typescript-eslint-parser": "^8.0.0"
+  }
+}
