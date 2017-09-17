@@ -6,6 +6,7 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
+    "outDir": "build",
     "rootDir": "src",
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,7 +15,9 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "traceResolution": true,
+    "baseUrl": "./src"
   },
   "exclude": [
     "node_modules",
