@@ -28,6 +28,12 @@ function rewireEslint(config) {
   )
   preLoaders.test = /\.(ts|tsx)$/
   eslintLoader.options.parser = 'typescript-eslint-parser'
+  eslintLoader.options.rules = {
+    'no-undef': 0,
+    'no-unused-vars': 0,
+    'no-useless-constructor': 0,
+    'space-infix-ops': 0
+  }
 
   return config
 }
