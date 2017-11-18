@@ -1,3 +1,4 @@
+const { compose } = require('react-app-rewired')
 const { getBabelLoader, getLoader } = require('react-app-rewired')
 const paths = require('react-app-rewired/scripts/utils/paths')
 
@@ -38,40 +39,37 @@ function rewireEslint(config) {
   return config
 }
 
-module.exports = {
-  tsRewireWebpack: function tsRewireWebpack(config) {
-    rewireBabel(config)
-    rewireEslint(config)
-
-    return config
-  },
-  tsRewireJest: function tsRewireJest(config) {
-    return Object.assign(config, {
-      collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
-      // setupTestFrameworkScriptFile: '<rootDir>/src/setupTests.ts',
-      moduleFileExtensions: [
-        'web.ts',
-        'ts',
-        'web.tsx',
-        'tsx',
-        ...config.moduleFileExtensions
-      ],
-      testMatch: [
-        '<rootDir>/src/**/__tests__/**/*.(t|j)s?(x)',
-        '<rootDir>/src/**/?(*.)(spec|test).(t|j)s?(x)'
-      ],
-      transform: Object.assign(
-        { '^.+\\.tsx?$': require.resolve('./typescriptTransform.js') },
-        config.transform
-      ),
-      transformIgnorePatterns: [
-        '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$'
-      ],
-      globals: {
-        'ts-jest': {
-          tsConfigFile: require.resolve(paths.appPath + '/tsconfig.test.json')
-        }
+function tsRewireJest(config) {
+  return Object.assign(config, {
+    collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
+    // setupTestFrameworkScriptFile: '<rootDir>/src/setupTests.ts',
+    moduleFileExtensions: [
+      'web.ts',
+      'ts',
+      'web.tsx',
+      'tsx',
+      ...config.moduleFileExtensions
+    ],
+    testMatch: [
+      '<rootDir>/src/**/__tests__/**/*.(t|j)s?(x)',
+      '<rootDir>/src/**/?(*.)(spec|test).(t|j)s?(x)'
+    ],
+    transform: Object.assign(
+      { '^.+\\.tsx?$': require.resolve('./typescriptTransform.js') },
+      config.transform
+    ),
+    transformIgnorePatterns: [
+      '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$'
+    ],
+    globals: {
+      'ts-jest': {
+        tsConfigFile: require.resolve(paths.appPath + '/tsconfig.test.json')
       }
-    })
-  }
+    }
+  })
+}
+
+module.exports = {
+  tsRewireWebpack: compose(rewireBabel, rewireEslint),
+  tsRewireJest: compose(tsRewireJest)
 }
