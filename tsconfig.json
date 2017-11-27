@@ -27,6 +27,7 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "config-overrides"
+    "config-overrides",
+    "cosmos.config.js"
   ]
 }
