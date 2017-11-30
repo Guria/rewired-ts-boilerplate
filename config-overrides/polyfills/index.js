@@ -1,5 +1,6 @@
 module.exports = function rewirePolyfills(config) {
-  config.entry = [require.resolve('./polyfills'), ...config.entry]
+  const entry = config.entry.main || config.entry
+  entry.unshift(require.resolve('./polyfills'))
 
   return config
 }
