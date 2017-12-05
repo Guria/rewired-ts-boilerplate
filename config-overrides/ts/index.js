@@ -1,5 +1,4 @@
-const { compose } = require('react-app-rewired')
-const { getBabelLoader, getLoader } = require('react-app-rewired')
+const { compose, getBabelLoader, getLoader } = require('react-app-rewired')
 const paths = require('react-app-rewired/scripts/utils/paths')
 
 function rewireBabel(config) {
