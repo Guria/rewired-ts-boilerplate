@@ -26,15 +26,10 @@ function rewireEslint(config) {
     config.module.rules,
     rule => rule.enforce === 'pre'
   )
-  preLoaders.test = /\.(ts|tsx)$/
-  eslintLoader.options.parser = 'typescript-eslint-parser'
-  eslintLoader.options.rules = {
-    'no-undef': 0,
-    // 'no-unused-vars': 0,
-    // 'no-useless-constructor': 0,
-    // 'space-infix-ops': 0
-  }
+  preLoaders.test = /\.(ts|tsx|js|jsx)$/
 
+  eslintLoader.options.useEslintrc = true
+  eslintLoader.options.ignore = true
   return config
 }
 

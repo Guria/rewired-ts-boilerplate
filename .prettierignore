@@ -1,3 +1,5 @@
 node_modules
+build
+cosmos-export
 package.json
 package-lock.json
