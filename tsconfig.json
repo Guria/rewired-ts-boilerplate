@@ -16,7 +16,6 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "traceResolution": true,
     "baseUrl": "./src"
   },
   "exclude": [
