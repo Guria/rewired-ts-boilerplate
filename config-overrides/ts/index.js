@@ -8,7 +8,14 @@ function rewireBabel(config) {
     test: /\.tsx?$/,
     use: [
       { loader: babelLoader.loader, options: babelLoader.options },
-      { loader: 'ts-loader' }
+      {
+        loader: 'ts-loader',
+        options: {
+          compilerOptions: {
+            noUnusedLocals: process.env.NODE_ENV === 'production'
+          }
+        }
+      }
     ]
   })
   delete babelLoader.options
