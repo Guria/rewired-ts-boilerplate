@@ -22,18 +22,18 @@ module.exports = function rewireOptimizeChunks(config) {
     // extract vendor chunk
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: '[name].[chunkhash:8].bundle.js'
+      filename: 'static/js/[name].[chunkhash:8].bundle.js'
     }),
     // extract webpack manifest and runtime
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      filename: 'manifest.[hash:8].js',
+      filename: 'static/js/manifest.[hash:8].js',
       minChunks: Infinity
     })
   ]
 
-  config.output.filename = '[name].[hash:8].bundle.js'
-  config.output.chunkFilename = '[name].[chunkhash:8].bundle.js'
+  config.output.filename = 'static/js/[name].[hash:8].bundle.js'
+  config.output.chunkFilename = 'static/js/[name].[chunkhash:8].bundle.js'
 
   return config
 }
