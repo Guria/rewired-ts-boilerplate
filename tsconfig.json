@@ -18,15 +18,8 @@
     "noUnusedLocals": true,
     "baseUrl": "./src"
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts",
-    "config-overrides",
-    "cosmos.config.js"
+  "include": [
+    "./src",
+    "index.d.ts"
   ]
 }
